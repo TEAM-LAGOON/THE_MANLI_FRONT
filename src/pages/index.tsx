@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
-import { Init } from '../components';
+import Container from '../Container/Atoms/Container';
 
 const Home: NextPage = () => {
-    return (
-        <div>
-            <Init>init</Init>
-        </div>
-    );
+  return (
+    <Container>
+      <div>dd</div>
+    </Container>
+  );
 };
 
 export default Home;
