@@ -8,8 +8,6 @@ const Container: React.FC<ContainerPropsType> = ({ className = '', children }) =
 export default Container;
 
 const Root = styled.div`
-  font-size: 2rem;
-
   ${props => props.theme.mq.mobile} {
     margin: 0 2rem;
   }

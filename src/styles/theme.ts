@@ -1,7 +1,7 @@
 export const size = {
   large: '180rem', //1440px
   medium: '75rem', //600px
-  small: '45em', // 360px;
+  small: '45rem', // 360px;
 };
 
 const theme = {
