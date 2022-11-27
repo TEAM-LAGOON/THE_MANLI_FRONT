@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Container from '../Container/Atoms/Container';
+import Container from '../components/Atoms/Container/Atoms/Container';
 
 const Home: NextPage = () => {
   return (
