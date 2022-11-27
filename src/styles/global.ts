@@ -22,6 +22,7 @@ export const global = css`
     --primary-50: #d6f5f2;
     --primary-200: #8fe3db;
     --primary-400: #6cdbcf;
+    --primary-500:#2FBFB0;
     --primary-600: #48d2c4;
 
     --quaternary-50: #ffeff9;
