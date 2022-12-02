@@ -1,12 +1,12 @@
 export const size = {
-  large: '180rem', //1440px
-  medium: '75rem', //600px
-  small: '45rem', // 360px;
+  large: '1280px',
+  medium: '1279px',
+  small: '480px',
 };
 
 const theme = {
   mq: {
-    laptop: `@media only screen and (max-width: ${size.large})`,
+    laptop: `@media only screen and (min-width: ${size.large})`,
     tablet: `@media only screen and (max-width: ${size.medium})`,
     mobile: `@media only screen and (max-width: ${size.small})`,
   },
