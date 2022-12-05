@@ -8,4 +8,5 @@ export {
   Icon,
   Text,
   CourseStepper,
+  TextArea,
 } from './Atoms';
