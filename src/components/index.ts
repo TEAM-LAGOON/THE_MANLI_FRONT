@@ -1,2 +1,2 @@
 /** Atoms */
-export { Container, Button, Card } from './Atoms';
+export { Container, Button, Card, Input } from './Atoms';
