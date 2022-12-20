@@ -8,5 +8,6 @@ export {
   Icon,
   Text,
   CourseStepper,
+  MulitPhotoUpload,
   TextArea,
 } from './Atoms';
