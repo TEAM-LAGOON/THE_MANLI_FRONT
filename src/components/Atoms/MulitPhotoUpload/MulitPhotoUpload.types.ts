@@ -2,7 +2,7 @@ export interface ImgListType {
   id: number;
   imgSrc: string;
   fileName: string;
-  createdAt: string;
+  createdAt: number;
 }
 
 export interface MulitPhotoUploadPropsType {
