@@ -6,7 +6,7 @@ const Avatar: React.FC<AvatarPropsType> = ({ imgSrc, ...props }) => {
   return (
     <AvatarContainer {...props}>
       <Image
-        src={imgSrc}
+        src={imgSrc || 'images/blank-profile.png'}
         alt="Avatar"
         layout="responsive"
         width="100%"
