@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { SwiperPropsType, dotTypes } from './Swiper.types';
 import { useCarouselSize } from '../../../hooks';
-import Image from 'next/image';
 
 const Swiper: React.FC<SwiperPropsType> = ({ ...props }) => {
   const { imageList } = props;
