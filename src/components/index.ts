@@ -18,3 +18,5 @@ export {
   ThumbnailUpload,
   ProfileUpload,
 } from './Atoms';
+
+export { ReactionButton } from './Modules';
