@@ -8,7 +8,9 @@ import {
   Text,
   CourseStepper,
   TextArea,
+  MulitPhotoUpload,
 } from '../components';
+import useMulitiImage from '../hooks/useMulitiImage';
 
 const props = {
   children: '만리',
@@ -18,6 +20,7 @@ const Home: NextPage = () => {
   const onChangeValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
+  const [imgList, onImgPlus, onDeleteImg] = useMulitiImage();
 
   console.log(value);
   return (
@@ -34,6 +37,11 @@ const Home: NextPage = () => {
       ></Text>
       <CourseStepper count={4} current={3} />
       <TextArea value={value} onChangeEvent={e => onChangeValue(e)}></TextArea>
+      <MulitPhotoUpload
+        imgList={imgList}
+        onImgPlus={onImgPlus}
+        onDeleteImg={onDeleteImg}
+      />
     </Container>
   );
 };

@@ -6,4 +6,5 @@ export interface IconPropsType {
   name: IconType;
   className?: string;
   style?: React.CSSProperties;
+  onClick?: () => void;
 }
