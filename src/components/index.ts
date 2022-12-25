@@ -12,5 +12,14 @@ export {
   TextArea,
   Input,
   Skeleton,
-  Spinner
+  Spinner,
 } from './Atoms';
+
+export {
+  TourListForm,
+  FavoriteCard,
+  Profile,
+  SearchInput,
+  Navbar,
+  ChallengeCard,
+} from './Modules';
