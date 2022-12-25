@@ -15,4 +15,6 @@ export {
   Spinner,
   Swiper,
   Select,
+  ThumbnailUpload,
+  ProfileUpload,
 } from './Atoms';
