@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { SwiperPropsType, dotTypes } from './Swiper.types';
 import { useCarouselSize } from '../../../hooks';
+import Image from 'next/image';
 
 const Swiper: React.FC<SwiperPropsType> = ({ ...props }) => {
   const { imageList } = props;
@@ -62,12 +63,17 @@ export default Swiper;
 
 const Container = styled.div`
   display: flex;
+  border-radius: 2rem;
   overflow: hidden;
   position: relative;
 `;
 
 const Carousel = styled.div`
   display: flex;
+  background-color: #d9d9d9;
+  img {
+    opacity: 0.8;
+  }
 `;
 
 const CarouselDotContainer = styled.div`
@@ -84,7 +90,8 @@ const CarouselDot = styled.div<dotTypes>`
   padding: 0.625rem;
   margin: 0 0.625rem;
   border-radius: 50%;
-  background: ${({ current }) => (current ? '#000' : '#fff')};
+  background: ${({ current }) => (current ? '#fff' : 'none')};
+  border: ${({ current }) => (current ? 'none' : '1px solid #fff')};
   cursor: pointer;
 `;
 
