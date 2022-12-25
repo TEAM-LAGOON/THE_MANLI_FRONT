@@ -10,4 +10,7 @@ export {
   CourseStepper,
   MulitPhotoUpload,
   TextArea,
+  Input,
+  Skeleton,
+  Spinner
 } from './Atoms';
