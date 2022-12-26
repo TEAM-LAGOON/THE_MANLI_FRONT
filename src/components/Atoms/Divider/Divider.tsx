@@ -29,13 +29,13 @@ Divider.defaultProps = {
 const Container = styled.div`
   width: 100%;
   text-align: center;
-  border-top: 0.125rem solid #e5e5e5; // Surface/surface-500
+  border-top: 0.125rem solid var(--surface-500);
   line-height: 0.0001rem;
   margin: 1.25rem 0 2.5rem;
 
   span {
     background-color: #fff;
-    color: #e5e5e5; // Surface/surface-500
+    color: var(--surface-500);
     padding: 0 1.25rem;
     font-size: 1.75rem;
   }
@@ -52,7 +52,7 @@ const RowContainer = styled.div`
   span {
     display: inline-block;
     background-color: #fff;
-    color: #e5e5e5; // Surface/surface-500
+    color: var(--surface-500);
     padding: 1.25rem 0;
     font-size: 1.75rem;
   }
@@ -62,6 +62,6 @@ const Line = styled.div`
   height: 100%;
   position: absolute;
   left: 50%;
-  border-left: 0.125rem solid #e5e5e5; // Surface/surface-500
+  border-left: 0.125rem solid var(--surface-500);
   z-index: -1;
 `;
