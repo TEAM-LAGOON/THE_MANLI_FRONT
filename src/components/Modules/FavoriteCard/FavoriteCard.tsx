@@ -4,11 +4,11 @@ import { Avatar, Button, Icon, Text } from '../../Atoms';
 
 const FavoriteCard: React.FC<FavoriteCardPropsType> = ({ ...props }) => {
   return (
-    <FavoriteCardContainer bgImg={props.bgImg}>
+    <FavoriteCardContainer thumbnail={props.thumbnail}>
       <div className="cancle-btn">
-        <Icon name="close" className="cursor-pointer" onClick={props.onCancle} />
+        <Icon name="close" className="cursor-pointer" onClick={() => props.onCancle} />
       </div>
-      <div className="inner cursor-pointer" onClick={props.onMoveDetail}>
+      <div className="inner cursor-pointer" onClick={() => props.onMoveDetail}>
         <div className="course-contents">
           <Text
             value={props.title}
@@ -32,7 +32,7 @@ const FavoriteCard: React.FC<FavoriteCardPropsType> = ({ ...props }) => {
           </div>
         </div>
         <div className="start-btn">
-          <Button bg="var(--secondary-500)">
+          <Button bg="var(--secondary-500)" onAction={() => props.onStartRoot}>
             <span className="text">시작</span>
             <Icon name="navigate" />
           </Button>
@@ -42,13 +42,13 @@ const FavoriteCard: React.FC<FavoriteCardPropsType> = ({ ...props }) => {
   );
 };
 
-const FavoriteCardContainer = styled.div<{ bgImg: string }>`
+const FavoriteCardContainer = styled.div<{ thumbnail: string }>`
   width: 100%;
   height: 20rem;
   padding: 2rem;
   box-sizing: border-box;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.33)),
-    url(${props => props.bgImg}), var(--white);
+    url(${props => props.thumbnail}), var(--white);
   border-radius: 2rem;
 
   & .cancle-btn {
@@ -69,7 +69,7 @@ const FavoriteCardContainer = styled.div<{ bgImg: string }>`
       justify-content: center;
 
       & .text {
-        font-family: 'ONE Mobile Title';
+        font-family: 'ONE-Mobile-Title';
         font-weight: 400;
         margin-right: 1rem;
         font-size: 1.75rem;

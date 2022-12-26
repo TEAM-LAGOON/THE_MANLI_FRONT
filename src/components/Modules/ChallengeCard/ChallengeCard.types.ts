@@ -1,4 +1,5 @@
 export interface ChallengeCardPropsType {
+  id: number;
   bgImg: string;
   title: string;
   count: number;

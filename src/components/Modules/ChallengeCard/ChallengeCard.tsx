@@ -4,9 +4,9 @@ import { Button, CourseStepper, Text } from '../../Atoms';
 
 const ChallengeCard: React.FC<ChallengeCardPropsType> = ({ ...props }) => {
   return (
-    <ChallengeCardContainer bgImg={props.bgImg}>
+    <ChallengeCardContainer thumbnail={props.thumbnail}>
       {props.count !== props.current && (
-        <div className="inner cursor-pointer" onClick={props.onMoveDetail}>
+        <div className="inner cursor-pointer" onClick={() => props.onMoveDetail}>
           <div className="course-contents">
             <Text
               value={props.title}
@@ -14,7 +14,7 @@ const ChallengeCard: React.FC<ChallengeCardPropsType> = ({ ...props }) => {
               color="var(--white)"
               align="left"
             />
-            <Button className="cancle-btn" onAction={props.onCancleChallenge}>
+            <Button className="cancle-btn" onAction={() => props.onCancleChallenge}>
               도전 취소
             </Button>
           </div>
@@ -26,11 +26,14 @@ const ChallengeCard: React.FC<ChallengeCardPropsType> = ({ ...props }) => {
         </div>
       )}
       {props.count === props.current && (
-        <div className="finish-course-contents">
+        <div
+          className="finish-course-contents cursor-pointer"
+          onClick={() => props.onMoveDetail}
+        >
           <div className="course-item">
             <Text value={props.title} type="semibold-m title" color="var(--white)" />
             {/* TODO: 폰트 추가 후 변경 */}
-            <Text value="도전 완료" type="semibold-m" color="var(--white)" />
+            <p className="finish">도전 완료</p>
           </div>
           <CourseStepper
             className="course-stepper"
@@ -43,13 +46,13 @@ const ChallengeCard: React.FC<ChallengeCardPropsType> = ({ ...props }) => {
   );
 };
 
-const ChallengeCardContainer = styled.div<{ bgImg: string }>`
+const ChallengeCardContainer = styled.div<{ thumbnail: string }>`
   width: 100%;
   height: 20rem;
   padding: 2rem;
   box-sizing: border-box;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.33)),
-    url(${props => props.bgImg}), var(--white);
+    url(${props => props.thumbnail}), var(--white);
   border-radius: 2rem;
 
   & .course-contents {
@@ -64,6 +67,8 @@ const ChallengeCardContainer = styled.div<{ bgImg: string }>`
       text-overflow: ellipsis;
     }
     & .cancle-btn {
+      font-family: 'ONE-Mobile-Title';
+      font-weight: 400;
       width: 11.125rem;
     }
   }
@@ -79,6 +84,14 @@ const ChallengeCardContainer = styled.div<{ bgImg: string }>`
     }
     & .title {
       margin-bottom: 0.5rem;
+    }
+    & .finish {
+      font-family: 'ONE-Mobile-Title';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 2.66625rem;
+      line-height: 1.5;
+      color: var(--white);
     }
   }
 `;
