@@ -19,4 +19,4 @@ export {
   ProfileUpload,
 } from './Atoms';
 
-export { ReactionButton, SwiperCard } from './Modules';
+export { ReactionButton, SwiperCard, BasicCard } from './Modules';
