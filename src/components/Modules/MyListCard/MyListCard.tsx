@@ -40,7 +40,9 @@ const MyListCard: React.FC<MyListCardPropsType> = ({ ...props }) => {
               hoverBg="rgba(255, 255, 255, 0.2);"
               radius="1.5rem"
             >
-              <Icon name="close" />
+              <svg width="16" height="17" viewBox="0 0 16 17">
+                <path d="M11.5 12L4.5 5M11.5 5L4.5 12" stroke="white" />
+              </svg>
               <Text value="삭제" type="semibold-s" color="var(--white)" />
             </Button>
           )}
@@ -77,11 +79,22 @@ const MyListCardContainer = styled.div<{ thumbnail: string }>`
     & .btn-contents {
       display: flex;
       justify-content: end;
+
       button {
         display: flex;
         align-items: center;
         width: 9.125rem;
         height: 4.125rem;
+
+        & .delete {
+          stroke-width: 1;
+          fill: path('M11.5 12L4.5 5M11.5 5L4.5 12');
+        }
+        svg {
+          margin-right: 1rem;
+          width: 2rem;
+          height: 2rem;
+        }
         path {
           stroke: var(--white);
         }
