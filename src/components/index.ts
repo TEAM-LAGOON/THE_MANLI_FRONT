@@ -22,4 +22,5 @@ export {
   SearchInput,
   Navbar,
   ChallengeCard,
+  MyListCard,
 } from './Modules';
