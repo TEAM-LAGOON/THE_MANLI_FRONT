@@ -5,16 +5,17 @@ import { BasicCardPropsType } from './BasicCard.types';
 
 const BasicCard: React.FC<BasicCardPropsType> = ({ ...props }) => {
   const { tourData, setTourData } = props;
-  const { name, address, description, imgSrc } = tourData;
+  const { name, address, description, imgSrc, disabled } = tourData;
+
   return (
     <Card>
       <Container>
-        <ContentsWrapper>
+        <ContentsWrapper disabled={disabled}>
           <h4 className="basicCard-name">{name}</h4>
           <p className="basicCard-address">{address}</p>
           <p className="basicCard-description text-ellipsis-two-line">{description}</p>
         </ContentsWrapper>
-        <ImgWrapper>
+        <ImgWrapper disabled={disabled}>
           <img src={imgSrc} alt={`${name} 투어 이미지`} />
         </ImgWrapper>
       </Container>
@@ -23,6 +24,7 @@ const BasicCard: React.FC<BasicCardPropsType> = ({ ...props }) => {
 };
 
 export default BasicCard;
+type disabledType = { disabled?: boolean };
 
 const Container = styled.div`
   display: flex;
@@ -32,15 +34,16 @@ const Container = styled.div`
   height: 14.125rem;
   text-align: left;
 `;
-const ContentsWrapper = styled.div`
+
+const ContentsWrapper = styled.div<disabledType>`
   & .basicCard-name {
     font-weight: 600;
     font-size: 2rem;
-    color: var(--text-500);
+    color: ${({ disabled }) => (disabled ? '#d9d9d9' : 'var(--text-500)')};
   }
   & .basicCard-address {
     font-size: 1.75rem;
-    color: var(--text-200);
+    color: ${({ disabled }) => (disabled ? '#d9d9d9' : 'var(--text-200)')};
     margin: 0.5rem 0 2rem 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -50,16 +53,17 @@ const ContentsWrapper = styled.div`
   }
   & .basicCard-description {
     font-size: 1.75rem;
-    color: var(--text-400);
+    color: ${({ disabled }) => (disabled ? '#d9d9d9' : 'var(--text-400)')};
   }
 `;
 
-const ImgWrapper = styled.div`
+const ImgWrapper = styled.div<disabledType>`
   img {
     width: 12rem;
     height: 12rem;
     object-fit: cover;
     border-radius: 2rem;
-    /* padding: 1.0625rem 0; */
+    background-color: ${({ disabled }) => (disabled ? '#d9d9d9' : null)};
+    opacity: ${({ disabled }) => (disabled ? '0.5' : null)};
   }
 `;
