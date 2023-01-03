@@ -1,5 +1,5 @@
 export interface AvatarPropsType {
-  imgSrc: string;
+  imgSrc?: string;
   width?: string;
   height?: string;
 }
