@@ -1,6 +1,6 @@
 export interface LoginFormPropsType {
   inputValue: logionFormInputValue;
-  handleChangeInput: () => void;
+  handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 interface logionFormInputValue {

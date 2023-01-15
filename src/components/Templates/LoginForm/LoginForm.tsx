@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { useInput } from '../../../hooks';
 import { Button, Container, Input, Text } from '../../Atoms';
 import { LoginFormPropsType } from './LoginForm.types';
 
