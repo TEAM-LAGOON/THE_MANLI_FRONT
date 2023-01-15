@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
-type useMultiInputType = (
-  initialValue: object,
-) => [object, (e: React.ChangeEvent<HTMLInputElement>) => void];
+interface useMultiInputType {
+  <T extends object>(initialValue: T): [
+    T,
+    (e: React.ChangeEvent<HTMLInputElement>) => void,
+  ];
+}
 
-const useMultiInput: useMultiInputType = initialValue => {
-  const [inputValue, setInputValue] = useState<any>(initialValue);
+const useMultiInput: useMultiInputType = <T extends object>(initialValue: T) => {
+  const [inputValue, setInputValue] = useState(initialValue);
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.currentTarget;
