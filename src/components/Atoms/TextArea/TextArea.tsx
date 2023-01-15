@@ -4,10 +4,9 @@ import styled from '@emotion/styled';
 import Text from '../Text';
 
 const TextArea: React.FC<TextAreaPropsType> = ({ ...props }) => {
-  console.log(props.value);
   return (
     <>
-      <TextAreaContainer>
+      <TextAreaContainer {...props}>
         <textarea
           name={props.name}
           id={props.id}
@@ -37,7 +36,7 @@ const TextAreaContainer = styled.div<TextAreaPropsType>`
     height: ${({ height }) => height || '16rem'};
     padding: 1rem 2rem;
     background: var(--white);
-    border: 0.125rem solid var(--surface-500);
+    border: ${({ border }) => border || '0.125rem solid var(--surface-500)'};
     border-radius: 2rem;
     font-size: 2rem;
     line-height: 1.5;
