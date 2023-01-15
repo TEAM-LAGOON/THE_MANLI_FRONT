@@ -11,6 +11,7 @@ import swap from './swap.svg';
 import thumb_down_outline from './thumb_down_outline.svg';
 import flag from './flag.svg';
 import thumb_up_outline from './thumb_up_outline.svg';
+import create from './create.svg';
 import caret_down_outline from './caret_down_outline.svg';
 
 export {
@@ -27,5 +28,6 @@ export {
   swap,
   thumb_down_outline,
   thumb_up_outline,
+  create,
   caret_down_outline,
 };
