@@ -50,6 +50,12 @@ const TextContainer = styled.div<TextPropsType>`
     font-size: 2rem;
     line-height: 1.5;
   }
+  //medium/large
+  &.medium-l {
+    font-weight: 500;
+    font-size: 2.666625rem;
+    line-height: 1.4;
+  }
   //regular/large
   &.regular-l {
     font-weight: 400;

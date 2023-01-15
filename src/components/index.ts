@@ -33,3 +33,5 @@ export {
   ControlBar,
   ChallengeList,
 } from './Modules';
+
+export { CourseForm, ProfileForm } from './Templates';

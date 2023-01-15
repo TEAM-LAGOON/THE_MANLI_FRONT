@@ -3,6 +3,7 @@ export interface TextAreaPropsType {
   id?: string;
   name?: string;
   placeHolder?: string;
+  border?: string;
   value?: string | ReadonlyArray<string>;
   maxLength?: number;
   width?: string;
