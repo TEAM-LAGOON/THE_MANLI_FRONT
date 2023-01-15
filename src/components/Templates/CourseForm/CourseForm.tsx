@@ -76,8 +76,8 @@ const CourseForm: React.FC<CourseFormPropsType> = ({ ...props }) => {
             align="left"
           />
           <ThumbnailUpload
-            singleImage={undefined}
-            setSingleImage={() => console.log('')}
+            singleImage={props.singleImage}
+            setSingleImage={props.setSingleImage}
           />
         </div>
         <div className="input-contents">
@@ -108,22 +108,27 @@ const CourseForm: React.FC<CourseFormPropsType> = ({ ...props }) => {
         {props.TourListFormList?.map((tour, idx) => (
           <TourListForm
             key={idx}
-            order={1}
-            id={1}
+            order={tour.order}
+            id={tour.id}
             title="관광지1"
-            imgList={[]}
-            address="dsd"
-            detailAddress="ss"
-            description="ssd"
+            imgList={tour.imgList}
+            address={tour.address}
+            detailAddress={tour.detailAddress}
+            description={tour.description}
             onClickPlusBtn={props.onClickPlusTour}
-            onImgPlus={() => console.log('')}
-            onDeleteImg={() => console.log('dd')}
-            onChangeInputValue={() => console.log('')}
+            onImgPlus={tour.onImgPlus}
+            onDeleteImg={tour.onDeleteImg}
+            onChangeInputValue={tour.onChangeInputValue}
           />
         ))}
 
         <div className="submit-btn">
-          <Button width="13.125rem" padding="1.25rem 5rem" fontSize="2rem">
+          <Button
+            width="13.125rem"
+            padding="1.25rem 5rem"
+            fontSize="2rem"
+            onAction={props.onSubmitCourse}
+          >
             제출
           </Button>
         </div>
