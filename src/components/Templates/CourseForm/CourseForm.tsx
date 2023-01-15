@@ -123,7 +123,7 @@ const CourseForm: React.FC<CourseFormPropsType> = ({ ...props }) => {
         ))}
 
         <div className="submit-btn">
-          <Button width="13.125rem" padding="1.25rem 5rem">
+          <Button width="13.125rem" padding="1.25rem 5rem" fontSize="2rem">
             제출
           </Button>
         </div>

@@ -34,4 +34,4 @@ export {
   ChallengeList,
 } from './Modules';
 
-export { CourseForm } from './Templates';
+export { CourseForm, ProfileForm } from './Templates';
