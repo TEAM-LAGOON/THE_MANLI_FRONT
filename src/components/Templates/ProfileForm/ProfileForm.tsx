@@ -33,7 +33,11 @@ const ProfileForm: React.FC<ProfileFormPropsType> = ({ ...props }) => {
           color="var(--text-300)"
           align="left"
         />
-        <TextArea border="0.125rem solid var(--surface-200)" />
+        <TextArea
+          border="0.125rem solid var(--surface-200)"
+          value={props.introduction}
+          onChangeEvent={props.onChangeTextValue}
+        />
       </div>
       <Button bg="var(--primary-500)" fontSize="2rem" onAction={props.onSaveProfile}>
         프로필 저장

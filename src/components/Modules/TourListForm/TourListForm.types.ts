@@ -1,18 +1,18 @@
 interface ImgListType {
   id: number;
-  imgSrc: string;
   fileName: string;
+  imgSrc: string;
   createdAt: number;
 }
 
 export interface TourListFormPropsType {
-  order: number;
-  id: number;
+  destId: number;
+  destOrder: number;
   imgList: ImgListType[];
-  title: string;
+  destName: string;
   address: string;
-  detailAddress: string;
-  description: string;
+  detailedAddress: string;
+  destDescription: string;
   onImgPlus: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onDeleteImg: (id: number) => void;
   onChangeInputValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
