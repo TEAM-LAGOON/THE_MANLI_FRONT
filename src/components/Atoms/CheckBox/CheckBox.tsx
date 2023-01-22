@@ -2,12 +2,18 @@ import styled from '@emotion/styled';
 import { CheckBoxPropsType } from './CheckBox.types';
 
 const CheckBox: React.FC<CheckBoxPropsType> = ({ ...props }) => {
-  const { id, onChangeCheckBox } = props;
+  const { id, isChecked, onChangeCheckBox } = props;
+
   return (
     <CheckBoxContainer>
       <div className="checkbox-wrapper">
         <div className="round">
-          <input type="checkbox" id={id} onChange={e => onChangeCheckBox(e)} />
+          <input
+            type="checkbox"
+            id={id}
+            onChange={e => onChangeCheckBox(e)}
+            checked={isChecked ? true : false}
+          />
           <label htmlFor={id}></label>
         </div>
       </div>
