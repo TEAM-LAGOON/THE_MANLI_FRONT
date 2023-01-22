@@ -4,10 +4,9 @@ import styled from '@emotion/styled';
 const Stepper: React.FC<StepperPropsType> = ({ ...props }) => {
   const { maxNum, currentNum } = props;
   const range = [...Array(maxNum)].map((v, i: number) => i + 1);
-  console.log(range);
 
   return (
-    <Container>
+    <Container className="stepper">
       {range.map((num: number) => (
         <>
           {currentNum === num ? (

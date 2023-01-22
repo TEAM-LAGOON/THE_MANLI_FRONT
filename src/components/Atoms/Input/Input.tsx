@@ -1,25 +1,77 @@
 import styled from '@emotion/styled';
-import { InputPropsType } from './Input.types';
+import { ChangeEvent } from 'react';
+import Icon from '../Icon';
+import { InputContainerPropsType, InputPropsType } from './Input.types';
 
 const Input: React.FC<InputPropsType> = ({ ...props }) => {
-  const { inputValue, placeholderText, inputType, onClick, onAction, inputName } = props;
+  const {
+    className,
+    iconName,
+    inputValue,
+    placeholderText,
+    inputType,
+    onClick,
+    onAction,
+    onFocus,
+    inputName,
+    bg,
+  } = props;
 
   return (
-    <Container
-      type={inputType || 'text'}
-      {...props}
-      placeholder={placeholderText}
-      onChange={onAction}
-      onClick={onClick}
-      value={inputValue}
-      name={inputName}
-    />
+    <>
+      {iconName ? (
+        <InputContainer bg={bg}>
+          <InputRoot
+            className={className}
+            type={inputType || 'text'}
+            {...props}
+            placeholder={placeholderText}
+            onChange={onAction}
+            onClick={onClick}
+            onFocus={onFocus}
+            value={inputValue}
+            name={inputName}
+          />
+          <Icon
+            className={`${
+              className === 'input-error' ? 'input-error-icon' : ''
+            } input-icon`}
+            name={iconName}
+            style={{ width: '2.626rem', height: '1.688rem' }}
+          />
+        </InputContainer>
+      ) : (
+        <InputRoot
+          className={className}
+          type={inputType || 'text'}
+          {...props}
+          placeholder={placeholderText}
+          onChange={onAction}
+          onClick={onClick}
+          onFocus={onFocus}
+          value={inputValue}
+          name={inputName}
+        />
+      )}
+    </>
   );
 };
 
 export default Input;
+const InputContainer = styled.div<InputContainerPropsType>`
+  position: relative;
 
-const Container = styled.input<InputPropsType>`
+  & .input-icon {
+    position: absolute;
+    z-index: 1;
+    top: 58%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    background: ${({ bg }) => (bg ? bg : '#fff')};
+  }
+`;
+
+const InputRoot = styled.input<InputPropsType>`
   width: 100%;
   padding: ${({ padding }) => (padding ? padding : '0.875rem 2rem')};
   background: ${({ bg }) => (bg ? bg : '#fff')};

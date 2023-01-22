@@ -13,6 +13,8 @@ import flag from './flag.svg';
 import thumb_up_outline from './thumb_up_outline.svg';
 import create from './create.svg';
 import caret_down_outline from './caret_down_outline.svg';
+import eye from './eye.svg';
+import check from './check.svg';
 
 export {
   camera,
@@ -30,4 +32,6 @@ export {
   thumb_up_outline,
   create,
   caret_down_outline,
+  eye,
+  check,
 };

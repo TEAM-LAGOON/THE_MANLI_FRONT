@@ -10,9 +10,15 @@ const Test: NextPage = () => {
       0: false,
       1: false,
       2: false,
+      pass: false,
     },
-    inputEmail: { email: '', nickName: '' },
-    inputPassword: { password: '', passwordCheck: '' },
+    inputEmail: { email: '', emailPass: false, nickName: '', nickNamePass: false },
+    inputPassword: {
+      password: '',
+      passwordPass: false,
+      passwordCheck: '',
+      passwordCheckPass: false,
+    },
   });
 
   useEffect(() => {

@@ -1,4 +1,9 @@
+import React from 'react';
+import { IconType } from '../Icon/Icon.types';
+
 export interface InputPropsType {
+  iconName?: IconType;
+  className?: string;
   inputValue: string;
   inputName?: string;
   inputType?: string;
@@ -11,4 +16,9 @@ export interface InputPropsType {
   fontSize?: string;
   border?: string;
   radius?: string;
+  onFocus?: () => void;
+}
+
+export interface InputContainerPropsType {
+  bg?: string;
 }

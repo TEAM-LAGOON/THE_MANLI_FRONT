@@ -10,4 +10,5 @@ export interface ButtonPropsType {
   radius?: string;
   hoverBg?: string;
   hoverColor?: string;
+  weight?: string;
 }

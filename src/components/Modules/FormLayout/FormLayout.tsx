@@ -3,27 +3,9 @@ import Link from 'next/link';
 import { Button, Text } from '../../Atoms';
 import Stepper from '../../Atoms/Stepper';
 import { FormLayoutPropsType } from './FormLayout.types';
-import { useRouter } from 'next/router';
 
 const FormLayout: React.FC<FormLayoutPropsType> = ({ children, ...props }) => {
-  const { formLayoutState, setFormLayoutState, nextPageCheck, errMsg, setErrMsg } = props;
-  const router = useRouter();
-
-  const nextHandler = (currentNum: number) => {
-    const checkNext = nextPageCheck(currentNum);
-
-    if (checkNext.result && currentNum === 3) {
-      // confirm
-      router.push('/');
-    } else if (checkNext.result) {
-      setFormLayoutState({
-        ...formLayoutState,
-        currentNum: formLayoutState.currentNum + 1,
-      });
-    } else {
-      setErrMsg({ ...errMsg, [checkNext.type]: checkNext.msg });
-    }
-  };
+  const { formLayoutState, setFormLayoutState, nextHandler } = props;
 
   return (
     <>
@@ -43,19 +25,44 @@ const FormLayout: React.FC<FormLayoutPropsType> = ({ children, ...props }) => {
       </StepperWrapper>
       {children}
       <ButtonWrapper>
-        <Link href={'/'}>
-          <a>
-            <Button bg={'none'} color={'var(--black)'}>
-              홈으로
-            </Button>
-          </a>
-        </Link>
+        {formLayoutState.currentNum === 1 ? (
+          <Link href={'/'}>
+            <a>
+              <Button
+                bg={'none'}
+                color={'var(--secondary-700)'}
+                padding={'1.25rem 2.5rem'}
+                weight={'600'}
+                fontSize={'2rem'}
+              >
+                홈으로
+              </Button>
+            </a>
+          </Link>
+        ) : (
+          <Button
+            bg={'none'}
+            color={'var(--secondary-700)'}
+            padding={'1.25rem 2.5rem'}
+            weight={'600'}
+            fontSize={'2rem'}
+            onAction={() => {
+              setFormLayoutState({
+                ...formLayoutState,
+                currentNum: formLayoutState.currentNum - 1,
+              });
+            }}
+          >
+            이전
+          </Button>
+        )}
         {formLayoutState.currentNum === formLayoutState.maxNum ? (
           <Link href={''}>
             <a>
               <Button
                 bg={'var(--primary-500)'}
                 color={'var(--white)'}
+                padding={'1.25rem 2.5rem'}
                 onAction={() => {
                   nextHandler(formLayoutState.currentNum);
                 }}
@@ -68,6 +75,7 @@ const FormLayout: React.FC<FormLayoutPropsType> = ({ children, ...props }) => {
           <Button
             bg={'var(--primary-500)'}
             color={'var(--white)'}
+            padding={'1.25rem 2.5rem'}
             onAction={() => nextHandler(formLayoutState.currentNum)}
           >
             다음
@@ -82,6 +90,7 @@ export default FormLayout;
 
 const StepperWrapper = styled.div`
   margin: 6rem 0 4rem 0;
+  font-size: 2rem;
 
   & .stepper {
     margin-bottom: 4rem;
@@ -94,8 +103,6 @@ const ButtonWrapper = styled.div`
   border-top: 1px solid var(--surface-500);
 
   button {
-    min-width: 5.25rem;
-    height: 3rem;
     width: fit-content;
     margin: 1.25rem 0;
   }

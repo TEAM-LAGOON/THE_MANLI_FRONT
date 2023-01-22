@@ -24,7 +24,7 @@ const Container = styled.button<ButtonPropsType>`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
   border: ${({ border }) => (border ? border : 'none')};
   border-radius: ${({ radius }) => (radius ? radius : '12.375rem')};
-
+  font-weight: ${({ weight }) => (weight ? weight : '400')};
   cursor: pointer;
 
   :hover {
