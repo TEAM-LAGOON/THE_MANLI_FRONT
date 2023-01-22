@@ -17,8 +17,6 @@ const useMultiInput: useMultiInputType = <T extends object>(initialValue: T) => 
       ...inputValue,
       [name]: value,
     });
-
-    console.log(inputValue);
   };
 
   return [inputValue, handleChangeInput];

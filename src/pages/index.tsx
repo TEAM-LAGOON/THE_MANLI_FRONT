@@ -16,7 +16,7 @@ import {
   MyListCard,
 } from '../components';
 
-import useMulitiImage from '../hooks/useMulitiImage';
+import useMulitiImage from '../hooks/useMultiImage';
 
 const props = {
   children: '만리',
@@ -29,7 +29,6 @@ const Home: NextPage = () => {
   };
   const [imgList, onImgPlus, onDeleteImg] = useMulitiImage();
 
-  console.log(value);
   return (
     <>
       <Navbar />
