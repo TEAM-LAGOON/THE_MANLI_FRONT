@@ -17,7 +17,7 @@ const Container = styled.button<ButtonPropsType>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: ${({ width }) => (width ? width : '100%')};
   padding: ${({ padding }) => (padding ? padding : '1.5rem')};
   background: ${({ bg }) => (bg ? bg : '#000')};
   color: ${({ color }) => (color ? color : '#fff')};

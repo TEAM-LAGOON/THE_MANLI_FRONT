@@ -73,10 +73,11 @@ const Container = styled.div`
   color: var(--text-400);
 
   & .thumbnail-upload {
-    width: 41rem;
+    width: 100%;
+    box-sizing: border-box;
+
     & .single-img-view-container {
       position: relative;
-      width: 100%;
       height: 16rem;
       border-radius: 2rem;
       border: 1px solid var(--surface-500);

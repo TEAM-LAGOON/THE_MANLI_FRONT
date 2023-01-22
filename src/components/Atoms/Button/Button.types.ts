@@ -2,6 +2,7 @@ export interface ButtonPropsType {
   children?: React.ReactNode;
   onAction?: () => void;
   className?: string;
+  width?: string;
   padding?: string;
   bg?: string;
   color?: string;
