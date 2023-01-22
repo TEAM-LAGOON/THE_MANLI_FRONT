@@ -23,4 +23,11 @@ export const reset = css`
     font-family: inherit;
     font-size: inherit;
   }
+
+  a,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    outline: none;
+  }
 `;
