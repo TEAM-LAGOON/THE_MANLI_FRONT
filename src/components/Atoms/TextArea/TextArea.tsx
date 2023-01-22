@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import Text from '../Text';
 
 const TextArea: React.FC<TextAreaPropsType> = ({ ...props }) => {
-  console.log(props.value);
   return (
     <>
       <TextAreaContainer>
