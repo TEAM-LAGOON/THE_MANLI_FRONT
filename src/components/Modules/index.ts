@@ -10,3 +10,4 @@ export { default as SwiperCard } from './SwiperCard';
 export { default as BasicCard } from './BasicCard';
 export { default as ControlBar } from './ControlBar';
 export { default as ChallengeList } from './ChallengeList';
+export { default as FormLayout } from './FormLayout';
