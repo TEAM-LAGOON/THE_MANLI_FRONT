@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import { InputPropsType } from './Input.types';
 
 const Input: React.FC<InputPropsType> = ({ ...props }) => {
-  const { inputValue, placeholderText, onClick, onAction, inputName } = props;
+  const { inputValue, placeholderText, inputType, onClick, onAction, inputName } = props;
 
   return (
     <Container
-      type="text"
+      type={inputType || 'text'}
       {...props}
       placeholder={placeholderText}
       onChange={onAction}

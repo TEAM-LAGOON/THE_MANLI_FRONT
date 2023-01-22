@@ -1,6 +1,7 @@
 export interface InputPropsType {
   inputValue: string;
   inputName?: string;
+  inputType?: string;
   placeholderText: string;
   onAction: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;
