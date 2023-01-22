@@ -1,35 +1,108 @@
 import { NavbarPropsType } from './Navbar.types';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import { Icon } from '../../Atoms';
+import { Avatar, Button, Chip, Icon, Text } from '../../Atoms';
+import Link from 'next/link';
+import { prependOnceListener } from 'process';
 
-const Navbar: React.FC<NavbarPropsType> = () => {
-  //TODO: menu 닫는 버튼이 있을 경우는 외부에 상태관리, 아닐 경우 내부에 관리. 디자인 나오는 것 체크 후 변경 예정
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
   return (
     <NavbarContainer>
-      {!isMenuOpen && (
-        <div className="drawer-menu">
-          <div
-            className="icon-wrapper cursor-pointer"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <Icon name="menu" />
-          </div>
+      <div className="drawer-menu">
+        <div className="icon-wrapper cursor-pointer" onClick={() => props.onOpenHandler}>
+          {props.isOpen ? <Icon name="close" /> : <Icon name="menu" />}
         </div>
-      )}
-      {isMenuOpen && (
-        <ul>
-          <li>메뉴</li>
-          <li>디자인 필요</li>
-        </ul>
+      </div>
+
+      {props.isOpen && (
+        <div className="drawer-menu open">
+          {!props.user && (
+            <div className="login">
+              <Link href={'/'}>
+                <Text type="medium-l cursor-pointer" value="로그인 하러가기" />
+              </Link>
+            </div>
+          )}
+          {props.user && (
+            <div className="user-contents">
+              <div className="profile-contents">
+                <div className="avatar">
+                  <Avatar imgSrc={props.user.profileImg} />
+                </div>
+                <div className="info">
+                  {props.user.level && (
+                    /* TODO: CHIP LEVEL REFACTOR */
+                    <Chip
+                      color={
+                        props.user.level === 1
+                          ? 'var(--surface-500)'
+                          : props.user.level === 2
+                          ? '#FFB79A'
+                          : props.user.level === 3
+                          ? 'var(--secondary-500)'
+                          : 'var(--primary-500)'
+                      }
+                      bgColor={
+                        props.user.level === 1
+                          ? 'var(surface-50)'
+                          : props.user.level === 2
+                          ? '#FCF9F0'
+                          : props.user.level === 3
+                          ? 'var(--secondary-50)'
+                          : 'var(--primary-50)'
+                      }
+                    >
+                      {props.user.level === 1
+                        ? '십리'
+                        : props.user.level === 2
+                        ? '백리'
+                        : props.user.level === 3
+                        ? '천리'
+                        : '만리'}
+                    </Chip>
+                  )}
+                  <Text type="regular-m nickname" value={props.user.nickname} />
+                </div>
+              </div>
+              <Button
+                width="6.125rem"
+                padding="0"
+                fontSize="1.75rem"
+                bg="none"
+                color="var(--text-200)"
+                onAction={props.logout}
+              >
+                로그아웃
+              </Button>
+            </div>
+          )}
+          <ul className="menu-list">
+            <li className="menu cursor-pointer">
+              <Link href={'/'}>
+                <Text type="medium-l link" align="left" value="홈" />
+              </Link>
+            </li>
+            <li className="menu cursor-pointer">
+              <Link href={'/root/add'}>
+                <Text type="medium-l link" align="left" value="경로등록 바로가기" />
+              </Link>
+            </li>
+            <li className="menu cursor-pointer">
+              <Link href={props.user ? '/mypage' : '/login'}>
+                <Text type="medium-l link" align="left" value="마이페이지" />
+              </Link>
+            </li>
+          </ul>
+        </div>
       )}
     </NavbarContainer>
   );
 };
 
-const NavbarContainer = styled.header`
+const NavbarContainer = styled.nav`
+  position: relative;
   & .drawer-menu {
+    width: 100%;
     height: 7.875rem;
     display: flex;
     flex-direction: column;
@@ -44,6 +117,48 @@ const NavbarContainer = styled.header`
       padding: 1.25rem;
       width: 5.5rem;
       height: 5.5rem;
+    }
+  }
+
+  & .open {
+    position: fixed;
+    left: 0;
+    top: 7.875rem;
+    display: block;
+    padding: 1.3125rem 2rem;
+    width: 100%;
+    z-index: 200;
+    height: 100vh;
+    background: var(--white);
+    overflow: auto;
+    box-sizing: border-box;
+
+    & .login {
+      width: 100%;
+    }
+    & .user-contents {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & .profile-contents {
+        display: flex;
+        align-items: center;
+        & .avatar {
+          margin-right: 2rem;
+        }
+        & .nickname {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    & .menu-list {
+      margin-top: 1rem;
+      & .menu {
+        height: 8rem;
+        & .link {
+          line-height: 8rem;
+        }
+      }
     }
   }
 `;

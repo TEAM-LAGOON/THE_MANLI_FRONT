@@ -1,5 +1,6 @@
 export interface InputPropsType {
-  inputValue: string;
+  inputValue: string | number;
+  type?: string;
   inputName?: string;
   inputType?: string;
   placeholderText: string;
