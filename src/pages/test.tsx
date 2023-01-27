@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-import { LoginForm, RegisterForm } from '../components';
+import { ChangePassword, LoginForm, RegisterForm } from '../components';
 import { useInput } from '../hooks';
 import useMultiInput from '../hooks/useMultiInput';
 
@@ -21,9 +21,9 @@ const Test: NextPage = () => {
     },
   });
 
-  useEffect(() => {
-    console.log(registerFormState);
-  }, [registerFormState]);
+  // useEffect(() => {
+  //   console.log(registerFormState);
+  // }, [registerFormState]);
 
   // const [inputValue, handleChangeInput] = useMultiInput({ email: '', password: '' });
 
@@ -31,13 +31,30 @@ const Test: NextPage = () => {
   //   inputValue: inputValue,
   //   handleChangeInput: handleChangeInput,
   // };
+  const [changePasswordState, setChangePasswordState] = useState({
+    inputEmail: { email: '', emailPass: false },
+    inputCertification: { certification: '', certificationPass: false },
+    inputPassword: {
+      password: '',
+      passwordPass: false,
+      passwordCheck: '',
+      passwordCheckPass: false,
+    },
+  });
 
+  useEffect(() => {
+    console.log('?', changePasswordState);
+  }, [changePasswordState]);
   return (
     <>
       {/* <LoginForm {...LoginFormtestProps} /> */}
-      <RegisterForm
+      {/* <RegisterForm
         registerFormState={registerFormState}
         setRegisterFormState={setRegisterFormState}
+      /> */}
+      <ChangePassword
+        changePasswordState={changePasswordState}
+        setChangePasswordState={setChangePasswordState}
       />
       <div style={{ maxWidth: '360px' }}></div>
     </>

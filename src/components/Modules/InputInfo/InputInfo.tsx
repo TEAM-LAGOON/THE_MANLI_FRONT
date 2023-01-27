@@ -26,10 +26,6 @@ const InputInfo: React.FC<InputInfoPropsType> = ({
     nickNameCheck(inputValue.nickName);
   }, [inputValue.nickName]);
 
-  useEffect(() => {
-    console.log(inputValue);
-  }, [inputValue]);
-
   const emailCheck = (email: string) => {
     if (inputValue.email.length > 0) {
       const regexResult = regexEmail(email);
@@ -58,7 +54,7 @@ const InputInfo: React.FC<InputInfoPropsType> = ({
   const nickNameCheck = (nickName: string) => {
     if (inputValue.nickName.length > 0) {
       const regexResult = regexNickName(nickName);
-      console.log('regexResult', regexResult);
+
       setPass({ ...pass, nickName: regexResult });
 
       if (regexResult) {

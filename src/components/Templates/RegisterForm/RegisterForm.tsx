@@ -21,7 +21,6 @@ const RegisterForm: React.FC<RegisterFormPropsType> = ({ ...props }) => {
   });
 
   const nextHandler = (currentNum: number) => {
-    console.log('?', currentNum, registerFormState);
     if (currentNum === 1) {
       if (registerFormState.agreeToTerms.pass) {
         setFormLayoutState({

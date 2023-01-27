@@ -16,4 +16,5 @@ export interface formLayoutStateType {
 export interface TextType {
   title: string;
   description: string;
+  subText?: string;
 }

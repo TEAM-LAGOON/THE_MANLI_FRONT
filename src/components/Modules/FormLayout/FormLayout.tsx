@@ -22,6 +22,12 @@ const FormLayout: React.FC<FormLayoutPropsType> = ({ children, ...props }) => {
           type={'regular-m'}
           value={formLayoutState.text[formLayoutState.currentNum - 1].description}
         />
+        {formLayoutState.text[formLayoutState.currentNum - 1].subText && (
+          <Text
+            type={'regular-m'}
+            value={formLayoutState.text[formLayoutState.currentNum - 1].subText}
+          />
+        )}
       </StepperWrapper>
       {children}
       <ButtonWrapper>
