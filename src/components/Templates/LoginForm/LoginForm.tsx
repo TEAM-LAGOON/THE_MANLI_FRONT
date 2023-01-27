@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { Button, Container, Input, Text } from '../../Atoms';
+import { Button, CheckBox, Container, Input, Text } from '../../Atoms';
 import { LoginFormPropsType } from './LoginForm.types';
 
 const LoginForm: React.FC<LoginFormPropsType> = ({ ...props }) => {
@@ -44,10 +44,15 @@ const LoginForm: React.FC<LoginFormPropsType> = ({ ...props }) => {
             </Button>
           </a>
         </Link>
-        <div>
-          {/* TODO: 체크 박스 생성 */}
+        <Wrapper>
           <Text type={'regular-s'} align={'right'} value={'이메일 저장'} />
-        </div>
+          <CheckBox
+            className={'email-save'}
+            id={''}
+            isChecked={false}
+            onChangeCheckBox={() => {}}
+          />
+        </Wrapper>
       </EtcWrapper>
       <LoginWrapper>
         {/* TODO: 로그인 클릭 이벤트 */}
@@ -85,6 +90,8 @@ const EtcWrapper = styled.div`
 
   button {
     width: fit-content;
+    padding: 0;
+    margin-top: 3rem;
   }
   div {
   }
@@ -93,4 +100,14 @@ const EtcWrapper = styled.div`
 const LoginWrapper = styled.div`
   width: 13.125rem;
   margin: 0 auto;
+  margin-top: 6rem;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  margin-top: 3rem;
+
+  & .email-save {
+    margin-left: 1rem;
+  }
 `;
