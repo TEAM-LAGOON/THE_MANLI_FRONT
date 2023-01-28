@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { IconType } from '../Icon/Icon.types';
 
 export interface InputPropsType {
   iconName?: IconType;
   className?: string;
-  inputValue: string;
+  inputValue: string | number;
   inputName?: string;
   inputType?: string;
   placeholderText: string;
@@ -18,8 +19,5 @@ export interface InputPropsType {
   radius?: string;
   onFocus?: () => void;
   onBlur?: () => void;
-}
-
-export interface InputContainerPropsType {
-  bg?: string;
+  iconBg?: string;
 }
