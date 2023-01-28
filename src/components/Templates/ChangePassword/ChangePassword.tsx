@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import useMultiInput from '../../../hooks/useMultiInput';
 import { regexEmail } from '../../../utils';
@@ -10,6 +11,7 @@ const ChangePassword: React.FC<ChangePasswordPropsType> = ({
   changePasswordState,
   setChangePasswordState,
 }) => {
+  const router = useRouter();
   const [inputValue, handleChangeInput] = useMultiInput({
     email: '',
     certification: '',
@@ -57,6 +59,7 @@ const ChangePassword: React.FC<ChangePasswordPropsType> = ({
         changePasswordState.inputPassword.passwordCheckPass
       ) {
         alert('비밀 번호 변경 완료');
+        router.push('/');
       }
     }
   };
