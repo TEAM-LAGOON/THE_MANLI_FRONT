@@ -14,3 +14,4 @@ export { default as MulitPhotoUpload } from './MulitPhotoUpload';
 export { default as TextArea } from './TextArea';
 export { default as Icon } from './Icon';
 export { SinglePhotoUpload, ThumbnailUpload, ProfileUpload } from './SinglePhotoUpload';
+export { default as CheckBox } from './CheckBox';

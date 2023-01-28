@@ -7,7 +7,7 @@ interface ImgListType {
   createdAt: number;
 }
 
-export default function useMulitiImage() {
+export default function useMultiImage() {
   const [imgList, setImgList] = useState<ImgListType[]>([]);
 
   const onImgPlus = (e: React.ChangeEvent<HTMLInputElement>) => {

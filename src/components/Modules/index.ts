@@ -10,3 +10,7 @@ export { default as SwiperCard } from './SwiperCard';
 export { default as BasicCard } from './BasicCard';
 export { default as ControlBar } from './ControlBar';
 export { default as ChallengeList } from './ChallengeList';
+export { default as FormLayout } from './FormLayout';
+export { default as AgreeToTerms } from './AgreeToTerms';
+export { default as inputInfo } from './InputInfo';
+export { default as InputPassword } from './InputPassword';

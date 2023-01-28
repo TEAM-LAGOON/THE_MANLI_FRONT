@@ -1,7 +1,12 @@
+import React from 'react';
+import { IconType } from '../Icon/Icon.types';
+
 export interface InputPropsType {
-  inputValue: string | number;
-  type?: string;
+  iconName?: IconType;
+  className?: string;
+  inputValue: string;
   inputName?: string;
+  inputType?: string;
   placeholderText: string;
   onAction: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;
@@ -11,4 +16,10 @@ export interface InputPropsType {
   fontSize?: string;
   border?: string;
   radius?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+}
+
+export interface InputContainerPropsType {
+  bg?: string;
 }

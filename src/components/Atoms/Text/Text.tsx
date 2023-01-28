@@ -1,9 +1,9 @@
 import { TextPropsType } from './Text.types';
 import styled from '@emotion/styled';
 
-const Text: React.FC<TextPropsType> = ({ value, ...props }) => {
+const Text: React.FC<TextPropsType> = ({ value, style, ...props }) => {
   return (
-    <TextContainer className={props.type} {...props}>
+    <TextContainer className={props.type} style={style} {...props}>
       {value}
     </TextContainer>
   );
