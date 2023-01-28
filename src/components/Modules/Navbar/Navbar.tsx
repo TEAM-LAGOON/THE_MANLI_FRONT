@@ -8,7 +8,10 @@ const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
   return (
     <NavbarContainer>
       <div className="drawer-menu">
-        <div className="icon-wrapper cursor-pointer" onClick={() => props.onOpenHandler}>
+        <div
+          className="icon-wrapper cursor-pointer"
+          onClick={() => props.onOpenHandler()}
+        >
           {props.isOpen ? <Icon name="close" /> : <Icon name="menu" />}
         </div>
       </div>
@@ -18,7 +21,9 @@ const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
           {!props.user && (
             <div className="login">
               <Link href={'/'}>
-                <Text type="medium-l cursor-pointer" value="로그인 하러가기" />
+                <a>
+                  <Text type="medium-l cursor-pointer" value="로그인 하러가기" />
+                </a>
               </Link>
             </div>
           )}
@@ -72,17 +77,23 @@ const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
           <ul className="menu-list">
             <li className="menu cursor-pointer">
               <Link href={'/'}>
-                <Text type="medium-l link" align="left" value="홈" />
+                <a>
+                  <Text type="medium-l link" align="left" value="홈" />
+                </a>
               </Link>
             </li>
             <li className="menu cursor-pointer">
               <Link href={'/root/add'}>
-                <Text type="medium-l link" align="left" value="경로등록 바로가기" />
+                <a>
+                  <Text type="medium-l link" align="left" value="경로등록 바로가기" />
+                </a>
               </Link>
             </li>
             <li className="menu cursor-pointer">
               <Link href={props.user ? '/mypage' : '/login'}>
-                <Text type="medium-l link" align="left" value="마이페이지" />
+                <a>
+                  <Text type="medium-l link" align="left" value="마이페이지" />
+                </a>
               </Link>
             </li>
           </ul>
