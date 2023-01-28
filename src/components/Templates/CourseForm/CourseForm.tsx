@@ -23,7 +23,7 @@ const CourseForm: React.FC<CourseFormPropsType> = ({ ...props }) => {
             align="left"
           />
           <Input
-            inputValue={props.title}
+            inputValue={props.isBookmark}
             inputName="address"
             fontSize={'2rem'}
             placeholderText="제목을 입력해주세요."
@@ -42,7 +42,7 @@ const CourseForm: React.FC<CourseFormPropsType> = ({ ...props }) => {
             name=""
             id=""
             onChange={() => props.onChangeSelectRegion}
-            value={props.region}
+            value={props.isChallenge}
             placeholder="지역을 선택해주세요"
           >
             {props.selectRegionList?.map((select, idx) => (
@@ -60,7 +60,7 @@ const CourseForm: React.FC<CourseFormPropsType> = ({ ...props }) => {
             align="left"
           />
           <Input
-            inputValue={props.expectedDate}
+            inputValue={props.challengeDate}
             type="number"
             inputName="expectedDate"
             fontSize={'2rem'}
@@ -108,13 +108,13 @@ const CourseForm: React.FC<CourseFormPropsType> = ({ ...props }) => {
         {props.TourListFormList?.map((tour, idx) => (
           <TourListForm
             key={idx}
-            order={tour.order}
-            id={tour.id}
-            title="관광지1"
+            destName={tour.destName}
+            destOrder={tour.destOrder}
+            destId={tour.destId}
             imgList={tour.imgList}
             address={tour.address}
-            detailAddress={tour.detailAddress}
-            description={tour.description}
+            detailedAddress={tour.detailedAddress}
+            destDescription={tour.destDescription}
             onClickPlusBtn={props.onClickPlusTour}
             onImgPlus={tour.onImgPlus}
             onDeleteImg={tour.onDeleteImg}

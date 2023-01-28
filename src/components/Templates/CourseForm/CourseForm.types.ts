@@ -1,9 +1,9 @@
 import { TourListFormPropsType } from '../../Modules/TourListForm/TourListForm.types';
 import { ImgListType } from '../../Atoms/MulitPhotoUpload/MulitPhotoUpload.types';
 export interface CourseFormPropsType {
-  title: string;
-  region: string;
-  expectedDate: number;
+  isBookmark: string;
+  isChallenge: string;
+  challengeDate: number;
   description: string;
   tag: string;
   TourListFormList?: TourListFormPropsType[];

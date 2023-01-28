@@ -2,11 +2,11 @@ import { AvatarPropsType } from './Avatar.types';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-const Avatar: React.FC<AvatarPropsType> = ({ imgSrc, ...props }) => {
+const Avatar: React.FC<AvatarPropsType> = ({ profile, ...props }) => {
   return (
     <AvatarContainer {...props}>
       <Image
-        src={imgSrc || 'images/blank-profile.png'}
+        src={profile || 'images/blank-profile.png'}
         alt="Avatar"
         layout="responsive"
         width="100%"

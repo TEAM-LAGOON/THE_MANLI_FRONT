@@ -6,7 +6,7 @@ const TourListForm: React.FC<TourListFormPropsType> = ({ ...props }) => {
   return (
     <TourListFormContainer>
       <Text
-        value={`관광지 ${props.order}`}
+        value={`관광지 ${props.destOrder}`}
         type="regular-m"
         color="var(--secondary-500)"
         align="left"
@@ -32,7 +32,7 @@ const TourListForm: React.FC<TourListFormPropsType> = ({ ...props }) => {
           align="left"
         />
         <Input
-          inputValue={props.title}
+          inputValue={props.destName}
           inputName="title"
           fontSize={'2rem'}
           placeholderText="관광지 명을 입력해주세요."
@@ -58,7 +58,7 @@ const TourListForm: React.FC<TourListFormPropsType> = ({ ...props }) => {
           align="left"
         />
         <Input
-          inputValue={props.detailAddress}
+          inputValue={props.detailedAddress}
           inputName="detailAddress"
           fontSize={'2rem'}
           placeholderText="상세주소를 입력해주세요."
@@ -68,11 +68,11 @@ const TourListForm: React.FC<TourListFormPropsType> = ({ ...props }) => {
       <div className="input-content description">
         <Text value="설명" type="regular-s title" color="var(--text-300)" align="left" />
         <TextArea
-          value={props.description}
+          value={props.destDescription}
           onChangeEvent={props.onChangeTextAreaValue}
         ></TextArea>
       </div>
-      {props.order < 8 && (
+      {props.destOrder < 8 && (
         <div className="plus-btn">
           <Button bg="none" onAction={props.onClickPlusBtn}>
             <Icon className="plus-svg" name="plus" />

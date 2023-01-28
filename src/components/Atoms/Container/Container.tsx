@@ -11,4 +11,12 @@ const Root = styled.div`
   ${props => props.theme.mq.mobile} {
     margin: 0 2rem;
   }
+
+  ${props => props.theme.mq.tablet} {
+    margin: 0 4rem;
+  }
+
+  ${props => props.theme.mq.laptop} {
+    margin: 0 auto;
+  }
 `;
