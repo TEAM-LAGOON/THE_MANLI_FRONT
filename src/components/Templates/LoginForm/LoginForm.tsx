@@ -1,10 +1,28 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import useLocalStorage from '../../../hooks/useLocalStorage';
 import { Button, CheckBox, Container, Input, Text } from '../../Atoms';
 import { LoginFormPropsType } from './LoginForm.types';
 
 const LoginForm: React.FC<LoginFormPropsType> = ({ ...props }) => {
-  const { inputValue, handleChangeInput } = props;
+  const {
+    inputValue,
+    handleChangeInput,
+    localStorageValue,
+    setLocalStorageValue,
+    delStorage,
+  } = props;
+
+  const [emailCheck, setEmailCheck] = useState(localStorageValue ? true : false);
+
+  const loginSubmit = () => {
+    if (emailCheck) {
+      setLocalStorageValue(inputValue.email);
+    } else {
+      delStorage();
+    }
+  };
 
   return (
     <Container>
@@ -37,7 +55,7 @@ const LoginForm: React.FC<LoginFormPropsType> = ({ ...props }) => {
       </InputWrapper>
       <EtcWrapper>
         {/* TODO: 링크 변경 */}
-        <Link href={''}>
+        <Link href={'/user/changepassword'}>
           <a>
             <Button color="var(--secondary-400)" bg="none">
               비밀번호 찾기
@@ -48,15 +66,15 @@ const LoginForm: React.FC<LoginFormPropsType> = ({ ...props }) => {
           <Text type={'regular-s'} align={'right'} value={'이메일 저장'} />
           <CheckBox
             className={'email-save'}
-            id={''}
-            isChecked={false}
-            onChangeCheckBox={() => {}}
+            id={'email-save'}
+            isChecked={emailCheck}
+            onChangeCheckBox={() => setEmailCheck(!emailCheck)}
           />
         </Wrapper>
       </EtcWrapper>
       <LoginWrapper>
         {/* TODO: 로그인 클릭 이벤트 */}
-        <Button onAction={() => {}}>시작</Button>
+        <Button onAction={() => loginSubmit()}>시작</Button>
       </LoginWrapper>
     </Container>
   );

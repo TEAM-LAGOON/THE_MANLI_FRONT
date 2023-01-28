@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 import { useState } from 'react';
 import useMultiInput from '../../../hooks/useMultiInput';
@@ -8,6 +9,7 @@ import InputInfo from '../../Modules/InputInfo';
 import { RegisterFormPropsType } from './RegisterForm.types';
 
 const RegisterForm: React.FC<RegisterFormPropsType> = ({ ...props }) => {
+  const router = useRouter();
   const { registerFormState, setRegisterFormState } = props;
 
   const [formLayoutState, setFormLayoutState] = useState({
@@ -44,6 +46,7 @@ const RegisterForm: React.FC<RegisterFormPropsType> = ({ ...props }) => {
         registerFormState.inputPassword.passwordCheckPass
       ) {
         alert('회원 가입 완료');
+        router.push('/');
       }
     }
   };
