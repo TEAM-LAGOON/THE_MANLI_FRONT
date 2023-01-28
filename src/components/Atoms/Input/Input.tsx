@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Icon from '../Icon';
 import { InputContainerPropsType, InputPropsType } from './Input.types';
 
@@ -13,9 +13,16 @@ const Input: React.FC<InputPropsType> = ({ ...props }) => {
     onClick,
     onAction,
     onFocus,
+    onBlur,
     inputName,
     bg,
   } = props;
+
+  const [toggle, setToggle] = useState(false);
+
+  const toggleHandler = () => {
+    setToggle(!toggle);
+  };
 
   return (
     <>
@@ -23,16 +30,18 @@ const Input: React.FC<InputPropsType> = ({ ...props }) => {
         <InputContainer bg={bg}>
           <InputRoot
             className={className}
-            type={inputType || 'text'}
+            type={toggle ? 'text' : 'password'}
             {...props}
             placeholder={placeholderText}
             onChange={onAction}
             onClick={onClick}
             onFocus={onFocus}
+            onBlur={onBlur}
             value={inputValue}
             name={inputName}
           />
           <Icon
+            onClick={toggleHandler}
             className={`${
               className === 'input-error' ? 'input-error-icon' : ''
             } input-icon`}

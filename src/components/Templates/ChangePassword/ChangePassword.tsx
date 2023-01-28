@@ -151,10 +151,10 @@ const ChangePassword: React.FC<ChangePasswordPropsType> = ({
               <Text type={'regular-s'} align={'left'} value={'인증번호'} />
               <Input
                 className={pass.certification === false ? 'input-error' : ''}
-                inputName={'email'}
+                inputName={'certification'}
                 fontSize={'2rem'}
                 padding={'1rem 2rem'}
-                inputValue={inputValue.email}
+                inputValue={inputValue.certification}
                 placeholderText={'인증번호를 입력해주세요.'}
                 onAction={handleChangeInput}
                 onFocus={() => certificationCheck(inputValue.certification)}

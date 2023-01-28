@@ -20,76 +20,59 @@ const InputPassword: React.FC<InputPasswordPropsType> = ({
   });
 
   useEffect(() => {
-    if (inputValue.password.length < 1) {
-      setPass({
-        passwordLength: undefined,
-        passwordRegex: undefined,
-        passwordCheck: undefined,
-      });
-    } else {
-      passwordLengthCheck(inputValue.password);
-      passwordRegexCheck(inputValue.password);
-    }
+    passwordValueRegexCheck(inputValue.password);
   }, [inputValue.password]);
 
   useEffect(() => {
     passwordCheckedCheck(inputValue.passwordCheck);
   }, [inputValue.passwordCheck]);
 
-  const passwordLengthCheck = (password: string) => {
-    if (inputValue.password.length > 0) {
-      const regexResult = regexPasswordLength(password);
-      setPass({ ...pass, passwordLength: regexResult });
+  const passwordValueRegexCheck = (password: string) => {
+    if (inputValue.password.length === 0) {
+      setPass({
+        passwordLength: undefined,
+        passwordRegex: undefined,
+        passwordCheck: undefined,
+      });
+      return;
+    }
 
-      if (regexResult && pass.passwordRegex) {
-        setRegisterFormState({
-          ...registerFormState,
-          inputPassword: {
-            ...registerFormState.inputPassword,
-            password: inputValue.password,
-            passwordPass: true,
-          },
-        });
-      } else {
-        setRegisterFormState({
-          ...registerFormState,
-          inputPassword: {
-            ...registerFormState.inputPassword,
-            passwordPass: false,
-          },
-        });
-      }
+    const lengthCheckResult = regexPasswordLength(password);
+    const RegexCheckResult = regexPassword(password);
+
+    setPass({
+      ...pass,
+      passwordRegex: RegexCheckResult,
+      passwordLength: lengthCheckResult,
+    });
+
+    if (lengthCheckResult && RegexCheckResult) {
+      setRegisterFormState({
+        ...registerFormState,
+        inputPassword: {
+          ...registerFormState.inputPassword,
+          password: inputValue.password,
+          passwordPass: true,
+        },
+      });
+    } else {
+      setRegisterFormState({
+        ...registerFormState,
+        inputPassword: {
+          ...registerFormState.inputPassword,
+          password: inputValue.password,
+          passwordPass: false,
+        },
+      });
     }
   };
-  const passwordRegexCheck = (password: string) => {
-    if (inputValue.password.length > 0) {
-      const regexResult = regexPassword(password);
-      setPass({ ...pass, passwordRegex: regexResult });
 
-      if (pass.passwordLength && regexResult) {
-        setRegisterFormState({
-          ...registerFormState,
-          inputPassword: {
-            ...registerFormState.inputPassword,
-            password: inputValue.password,
-            passwordPass: true,
-          },
-        });
-      } else {
-        setRegisterFormState({
-          ...registerFormState,
-          inputPassword: {
-            ...registerFormState.inputPassword,
-            passwordPass: false,
-          },
-        });
-      }
-    }
-  };
   const passwordCheckedCheck = (passwordCheck: string) => {
     if (inputValue.password === passwordCheck) {
-      setPass({ ...pass, passwordCheck: true });
-
+      setPass({
+        ...pass,
+        passwordCheck: true,
+      });
       setRegisterFormState({
         ...registerFormState,
         inputPassword: {
@@ -98,8 +81,11 @@ const InputPassword: React.FC<InputPasswordPropsType> = ({
           passwordCheckPass: true,
         },
       });
-    } else if (inputValue.passwordCheck.length > 0) {
-      setPass({ ...pass, passwordCheck: false });
+    } else {
+      setPass({
+        ...pass,
+        passwordCheck: false,
+      });
     }
   };
 
@@ -123,10 +109,8 @@ const InputPassword: React.FC<InputPasswordPropsType> = ({
           placeholderText={'비밀번호를 입력해주세요'}
           inputValue={inputValue.password}
           onAction={handleChangeInput}
-          onFocus={() => {
-            passwordRegexCheck(inputValue.password);
-            passwordLengthCheck(inputValue.password);
-          }}
+          onFocus={() => passwordValueRegexCheck(inputValue.password)}
+          onBlur={() => passwordValueRegexCheck(inputValue.password)}
         />
         <div className="regex-check">
           <Icon
@@ -183,7 +167,7 @@ const InputPassword: React.FC<InputPasswordPropsType> = ({
       <div className="InputInfo-wrapper">
         <Text type={'regular-s'} align={'left'} value={'비밀번호 재확인'} />
         <Input
-          className={pass.passwordCheck ? '' : 'input-error'}
+          className={pass.passwordCheck === false ? 'input-error' : ''}
           fontSize={'2rem'}
           padding={'1rem 2rem'}
           inputName={'passwordCheck'}
@@ -193,10 +177,12 @@ const InputPassword: React.FC<InputPasswordPropsType> = ({
           inputValue={inputValue.passwordCheck}
           onAction={handleChangeInput}
           onFocus={() => {
-            passwordCheckedCheck(inputValue.passwordCheck);
+            inputValue.passwordCheck.length !== 0
+              ? passwordCheckedCheck(inputValue.passwordCheck)
+              : setPass({ ...pass, passwordCheck: undefined });
           }}
         />
-        {!pass.passwordCheck ? (
+        {pass.passwordCheck === false ? (
           <Text
             style={{ textIndent: '1rem', marginTop: '0.5rem' }}
             type={'regular-sm'}
@@ -228,7 +214,6 @@ const Wrapper = styled.div`
 
   & .regex-check {
     display: flex;
-    text-indent: 1rem;
     margin-top: 0.5rem;
     line-height: 150%;
 
@@ -236,7 +221,7 @@ const Wrapper = styled.div`
       width: 1.875rem;
       height: 1.875rem;
       padding: 0.062rem;
-      margin-right: 0.812rem;
+      margin-right: 0.5rem;
       margin-left: 1.562rem;
     }
   }

@@ -17,6 +17,7 @@ export interface InputPropsType {
   border?: string;
   radius?: string;
   onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export interface InputContainerPropsType {
