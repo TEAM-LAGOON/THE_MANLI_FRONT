@@ -3,13 +3,15 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { Avatar, Button, Chip, Icon, Text } from '../../Atoms';
 import Link from 'next/link';
-import { prependOnceListener } from 'process';
 
 const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
   return (
     <NavbarContainer>
       <div className="drawer-menu">
-        <div className="icon-wrapper cursor-pointer" onClick={() => props.onOpenHandler}>
+        <div
+          className="icon-wrapper cursor-pointer"
+          onClick={() => props.onOpenHandler()}
+        >
           {props.isOpen ? <Icon name="close" /> : <Icon name="menu" />}
         </div>
       </div>
@@ -19,7 +21,9 @@ const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
           {!props.user && (
             <div className="login">
               <Link href={'/'}>
-                <Text type="medium-l cursor-pointer" value="로그인 하러가기" />
+                <a>
+                  <Text type="medium-l cursor-pointer" value="로그인 하러가기" />
+                </a>
               </Link>
             </div>
           )}
@@ -27,38 +31,32 @@ const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
             <div className="user-contents">
               <div className="profile-contents">
                 <div className="avatar">
-                  <Avatar imgSrc={props.user.profileImg} />
+                  <Avatar profile={props.user.profileImg} />
                 </div>
                 <div className="info">
                   {props.user.level && (
                     /* TODO: CHIP LEVEL REFACTOR */
                     <Chip
                       color={
-                        props.user.level === 1
+                        props.user.level === '십리'
                           ? 'var(--surface-500)'
-                          : props.user.level === 2
+                          : props.user.level === '백리'
                           ? '#FFB79A'
-                          : props.user.level === 3
+                          : props.user.level === '천리'
                           ? 'var(--secondary-500)'
                           : 'var(--primary-500)'
                       }
                       bgColor={
-                        props.user.level === 1
+                        props.user.level === '십리'
                           ? 'var(surface-50)'
-                          : props.user.level === 2
+                          : props.user.level === '백리'
                           ? '#FCF9F0'
-                          : props.user.level === 3
+                          : props.user.level === '천리'
                           ? 'var(--secondary-50)'
                           : 'var(--primary-50)'
                       }
                     >
-                      {props.user.level === 1
-                        ? '십리'
-                        : props.user.level === 2
-                        ? '백리'
-                        : props.user.level === 3
-                        ? '천리'
-                        : '만리'}
+                      {props.user.level}
                     </Chip>
                   )}
                   <Text type="regular-m nickname" value={props.user.nickname} />
@@ -79,17 +77,23 @@ const Navbar: React.FC<NavbarPropsType> = ({ ...props }) => {
           <ul className="menu-list">
             <li className="menu cursor-pointer">
               <Link href={'/'}>
-                <Text type="medium-l link" align="left" value="홈" />
+                <a>
+                  <Text type="medium-l link" align="left" value="홈" />
+                </a>
               </Link>
             </li>
             <li className="menu cursor-pointer">
               <Link href={'/root/add'}>
-                <Text type="medium-l link" align="left" value="경로등록 바로가기" />
+                <a>
+                  <Text type="medium-l link" align="left" value="경로등록 바로가기" />
+                </a>
               </Link>
             </li>
             <li className="menu cursor-pointer">
               <Link href={props.user ? '/mypage' : '/login'}>
-                <Text type="medium-l link" align="left" value="마이페이지" />
+                <a>
+                  <Text type="medium-l link" align="left" value="마이페이지" />
+                </a>
               </Link>
             </li>
           </ul>
@@ -129,7 +133,8 @@ const NavbarContainer = styled.nav`
     width: 100%;
     z-index: 200;
     height: 100vh;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.66);
+    backdrop-filter: blur(12px);
     overflow: auto;
     box-sizing: border-box;
 
