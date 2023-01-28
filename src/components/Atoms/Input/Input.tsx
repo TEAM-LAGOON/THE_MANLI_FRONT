@@ -73,19 +73,20 @@ const InputContainer = styled.div<InputPropsType>`
   }
 
   & .input-error {
-    color: var(--error-500) !important;
-    border: 1px solid var(--error-500) !important;
-    background-color: var(--error-50) !important;
+    color: var(--error-500);
+    border: 1px solid var(--error-500);
+    background-color: var(--error-50);
     outline: none;
   }
 
   & .input-error-icon {
-    color: var(--error-500) !important;
-    background-color: var(--error-50) !important;
+    color: var(--error-500);
+    background-color: var(--error-50);
     outline: none;
   }
+
   & .input-error::-webkit-input-placeholder {
-    color: var(--error-500) !important;
+    color: var(--error-500);
   }
 
   & .input-icon {
