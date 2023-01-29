@@ -4,7 +4,7 @@ export interface FormLayoutPropsType {
   children: React.ReactNode;
   formLayoutState: formLayoutStateType;
   setFormLayoutState: Function;
-  nextHandler: any;
+  nextHandler: Function;
 }
 
 export interface formLayoutStateType {

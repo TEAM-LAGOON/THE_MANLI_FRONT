@@ -1,4 +1,3 @@
-export interface AgreeToTermsPropsType {
-  registerFormState: any;
-  setRegisterFormState: any;
-}
+import { RegisterFormPropsType } from '../../Templates/RegisterForm';
+
+export interface AgreeToTermsPropsType extends RegisterFormPropsType {}
