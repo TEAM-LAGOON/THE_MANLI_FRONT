@@ -1,7 +1,7 @@
 interface UserProfileType {
   profileImg?: string;
   nickname?: string;
-  level?: number;
+  level?: string;
 }
 
 export interface NavbarPropsType {
