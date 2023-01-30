@@ -13,7 +13,7 @@ const Root = styled.div`
   }
 
   ${props => props.theme.mq.tablet} {
-    margin: 0 4rem;
+    /*    margin: 0 4rem; */
   }
 
   ${props => props.theme.mq.laptop} {

@@ -36,5 +36,6 @@ const ThumbnailButton = styled.div`
   span {
     text-align: center;
     margin-left: 2rem;
+    white-space: nowrap;
   }
 `;

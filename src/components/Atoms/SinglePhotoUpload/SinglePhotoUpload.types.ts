@@ -9,9 +9,8 @@ export interface SinglePhotoUploadPropsType extends SinglePhotoType {
 }
 
 export interface ImgListType {
-  imgSrc: string;
-  fileName: string;
-  createdAt: number;
+  filePath: string;
+  originalFileName: string;
 }
 
 export interface ThumbnailUploadPropsType extends SinglePhotoType {}

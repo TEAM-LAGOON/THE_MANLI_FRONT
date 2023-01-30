@@ -5,7 +5,7 @@ import { IconType } from '../Icon/Icon.types';
 export interface InputPropsType {
   iconName?: IconType;
   className?: string;
-  inputValue: string | number;
+  inputValue: string | number | undefined;
   inputName?: string;
   inputType?: string;
   placeholderText: string;

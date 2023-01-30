@@ -1,3 +1,5 @@
+import React, { SetStateAction, Dispatch } from 'react';
+
 export interface ImgListType {
   id: number;
   imgSrc: string;
@@ -6,7 +8,7 @@ export interface ImgListType {
 }
 
 export interface MulitPhotoUploadPropsType {
-  imgList: ImgListType[];
+  imgList: ImgListType[] | undefined | null;
   onImgPlus: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onDeleteImg: (id: number) => void;
 }

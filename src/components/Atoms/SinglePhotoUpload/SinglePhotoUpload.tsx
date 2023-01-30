@@ -28,9 +28,8 @@ const SinglePhotoUpload: React.FC<SinglePhotoUploadPropsType> = ({
     fr.onload = () => {
       if (typeof fr.result === 'string') {
         setSingleImage({
-          imgSrc: fr.result,
-          fileName: file.name,
-          createdAt: Date.now(),
+          filePath: fr.result,
+          originalFileName: file.name,
         });
       }
     };
@@ -42,7 +41,7 @@ const SinglePhotoUpload: React.FC<SinglePhotoUploadPropsType> = ({
         {singleImage ? (
           <div className="single-img-view-container">
             <Image
-              src={singleImage.imgSrc}
+              src={singleImage.filePath}
               alt="업로드 이미지"
               layout="fill"
               objectFit="cover"
